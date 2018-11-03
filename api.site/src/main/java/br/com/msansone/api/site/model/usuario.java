@@ -1,6 +1,7 @@
 package br.com.msansone.api.site.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import lombok.Data;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
@@ -12,6 +13,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
+@Data
 @Entity
 @Table(name = "usuario")
 @EntityListeners(AuditingEntityListener.class)
@@ -38,44 +40,6 @@ public class usuario implements Serializable {
     private Set<grupo> grupos = new HashSet<grupo>(0);
 
 
-    public Set<grupo> getGrupos() {
-        return grupos;
-    }
 
-    public void setGrupos(Set<grupo> grupos) {
-        this.grupos = grupos;
-    }
-
-    public Long getIdusuario() {
-        return idusuario;
-    }
-
-    public void setIdusuario(Long idusuario) {
-        this.idusuario = idusuario;
-    }
-
-    public String getNome() {
-        return nome;
-    }
-
-    public void setNome(String nome) {
-        this.nome = nome;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getSenha() {
-        return senha;
-    }
-
-    public void setSenha(String senha) {
-        this.senha = senha;
-    }
 }
 

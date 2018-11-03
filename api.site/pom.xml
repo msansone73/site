@@ -50,34 +50,40 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<version>1.18.4</version>
+			<scope>provided</scope>
+		</dependency>
 	</dependencies>
 
 	<build>
 		<plugins>
-	           <plugin>
-                      <groupId>com.spotify</groupId>
-                      <artifactId>dockerfile-maven-plugin</artifactId>
-		      <version>1.3.6</version>
-		      <executions>
-    <execution>
-      <id>default</id>
-      <goals>
-        <goal>build</goal>
-        <goal>push</goal>
-      </goals>
-    </execution>
-  </executions>
-                      <configuration>
-                          <repository>${docker.image.prefix}/${project.artifactId}</repository>
-                          <buildArgs>
-                              <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
-                          </buildArgs>
-                      </configuration>
-                  </plugin>
+	      <plugin>
+          		<groupId>com.spotify</groupId>
+                <artifactId>dockerfile-maven-plugin</artifactId>
+			    <version>1.3.6</version>
+		        <executions>
+				   <execution>
+				      <id>default</id>
+				      <goals>
+						  <goal>build</goal>
+					      <goal>push</goal>
+				      </goals>
+				   </execution>
+			    </executions>
+                <configuration>
+                   <repository>${docker.image.prefix}/${project.artifactId}</repository>
+                      <buildArgs>
+                         <JAR_FILE>target/${project.build.finalName}.jar</JAR_FILE>
+                      </buildArgs>
+				</configuration>
+          </plugin>
 		  <plugin>
 		      <groupId>org.springframework.boot</groupId>
-	              <artifactId>spring-boot-maven-plugin</artifactId>
-	          </plugin>
+			  <artifactId>spring-boot-maven-plugin</artifactId>
+	      </plugin>
 		</plugins>
 	</build>
 </project>
